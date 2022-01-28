@@ -3,7 +3,7 @@
 //*****************************************************************
 //* LICENSED MATERIALS - PROPERTY OF IBM
 //* "RESTRICTED MATERIALS OF IBM"
-//* (C) COPYRIGHT IBM CORPORATION 2018, 2022. ALL RIGHTS RESERVED
+//* (C) COPYRIGHT IBM CORPORATION 2018, 2021. ALL RIGHTS RESERVED
 //*
 //*  US GOVERNMENT USERS RESTRICTED RIGHTS - USE, DUPLICATION,
 //*  OR DISCLOSURE RESTRICTED BY GSA ADP SCHEDULE
@@ -31,18 +31,14 @@
 //*
 //*****************************************************************
 //    SET HLQ='IBMUSER'                       *TSO USER ID
-//    SET CMPLLIB='IGY.V6R3M0.SIGYCOMP'       *COMPILER LIBRARY
+//    SET CMPLLIB='IGY630.SIGYCOMP'           *COMPILER LIBRARY
 //    SET LINKLIB='CEE.SCEELKED'              *LINK LIBRARY
 //    SET SPACE1='SYSALLDA,SPACE=(CYL,(1,1))' *SPACE ALLOCATION
 //    SET SPACE2='SYSALLDA,SPACE=(CYL,(1,1))' *SPACE ALLOCATION
-//    SET DBGLIB='EQAW.SEQAMOD'               *DEBUGGER LIBRARY
+//    SET DBGLIB='EQAF00.SEQAMOD'             *DEBUGGER LIBRARY
 //    SET DBGCOPTS='TEST'                     *DEBUG COMPILE OPTS
-//*
-//*   FOR DEBUGGING WITH Z OPEN DEBUG FOR VS CODE, USE THIS LINE:
-//    SET TESTOPT='/TEST(,,,RDS:*)'
-//*
-//*   FOR DEBUGGING WITH WAZI DEVELOPER FOR ECLIPSE, USE THIS LINE:
-//*   SET TESTOPT='/TEST(,,,DBMDT:*)'
+//    SET DBGADDR='localhost'                 *DEBUG ADAPTER ADDR
+//    SET DBGPORT='7393'                      *DEBUG ADAPTER PORT
 //*
 //***************************
 //*                         *
@@ -153,8 +149,9 @@
 //*************************
 //* RUN SAM1
 //*************************
-//SAM1   EXEC   PGM=SAM1,
-//       PARM=('&TESTOPT')
+// SET APOS='&'
+//SAM1  EXEC   PGM=SAM1,
+//       PARM=('/TEST(,,,TCPIP&APOS&DBGADDR%&DBGPORT:*)')
 //STEPLIB DD DSN=&HLQ..SAMPLE.LOAD,DISP=SHR
 //        DD DSN=&DBGLIB,DISP=SHR
 //*
