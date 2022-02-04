@@ -1,7 +1,7 @@
 ################################################################
 # LICENSED MATERIALS - PROPERTY OF IBM
 # "RESTRICTED MATERIALS OF IBM"
-# (C) COPYRIGHT IBM CORPORATION 2021. ALL RIGHTS RESERVED
+# (C) COPYRIGHT IBM CORPORATION 2022. ALL RIGHTS RESERVED
 # US GOVERNMENT USERS RESTRICTED RIGHTS - USE, DUPLICATION,
 # OR DISCLOSURE RESTRICTED BY GSA ADP SCHEDULE
 # CONTRACT WITH IBM CORPORATION
@@ -20,8 +20,8 @@ variables:
 dbb:
   stage: dependencies
   trigger:
-    project: "kmayoz/dbb-zappbuild"
-    branch: development
+    project: "wazi1/dbb-zappbuild"
+    branch: main
     strategy: depend
 
 build-job:
@@ -32,14 +32,14 @@ build-job:
       mkdir -p $DBB_LOG_DIR
   script:
     - |
-      $DBB_HOME/bin/groovyz -DBB_PERSONAL_DAEMON $PWD/../dbb-zappbuild/build.groovy --workspace $PWD/.. --application zopeneditor-sample --hlq IBMUSER.SAMPLE --outDir $DBB_LOG_DIR --fullBuild
+      $DBB_HOME/bin/groovyz $PWD/../dbb-zappbuild/build.groovy --workspace $PWD/.. --application zopeneditor-sample --hlq IBMUSER.SAMPLE --outDir $DBB_LOG_DIR --fullBuild
   artifacts:
     name: "build-logs-${CI_PIPELINE_ID}"
     paths:
       - $DBB_LOG_DIR
     expire_in: 1 month
   tags:
-    - zos
+    - wazi
 
 unit-test-job:
   stage: test
@@ -48,4 +48,4 @@ unit-test-job:
     - |
       $DBB_HOME/bin/groovyz -DBB_PERSONAL_DAEMON $PWD/BUILD/dbb-sam-run.groovy IBMUSER $PWD
   tags:
-    - zos
+    - wazi
