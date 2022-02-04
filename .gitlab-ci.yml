@@ -21,7 +21,7 @@ dbb:
   stage: dependencies
   trigger:
     project: "wazi1/dbb-zappbuild"
-    branch: main
+    branch: gitlab
     strategy: depend
 
 build-job:
