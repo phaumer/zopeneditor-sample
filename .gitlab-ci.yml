@@ -20,7 +20,7 @@ variables:
 dbb:
   stage: dependencies
   trigger:
-    project: "wazi/dbb-zappbuild"
+    project: "wazi1/dbb-zappbuild"
     branch: main
     strategy: depend
 
