@@ -46,6 +46,6 @@ unit-test-job:
   script:
     - mkdir -p $PWD/logs
     - |
-      $DBB_HOME/bin/groovyz -DBB_PERSONAL_DAEMON $PWD/BUILD/dbb-sam-run.groovy IBMUSER $PWD
+      $DBB_HOME/bin/groovyz $PWD/groovy/dbb-sam-run.groovy IBMUSER $PWD
   tags:
     - wazi
