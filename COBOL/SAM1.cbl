@@ -13,8 +13,6 @@
       * READS A SEQUENTIAL TRANSACTION FILE AND MAKES UPDATES
       * TO A SORTED SEQUENTIAL CUSTOMER FILE
       *
-      * A GOOD CASE FOR DEBUGGING LAB - INDEED
-      *
       * CAN BE MADE TO ABEND WITH BAD INPUT DATA FOR FAULT ANALYSIS LAB
       *****************************************************************
       *
