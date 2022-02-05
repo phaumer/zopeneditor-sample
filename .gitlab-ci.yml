@@ -17,10 +17,10 @@ variables:
   DBB_HOME: "/usr/lpp/IBM/dbb"
   DBB_LOG_DIR: "$CI_PROJECT_DIR/build_log/$CI_PIPELINE_ID"
 
-dbb:
+prepare-dbb:
   stage: dependencies
   trigger:
-    project: "wazi1/dbb-zappbuild"
+    project: "wazi/dbb-zappbuild"
     branch: gitlab
     strategy: depend
 
