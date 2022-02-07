@@ -211,6 +211,7 @@
        000-MAIN.
            ACCEPT CURRENT-DATE FROM DATE.
            ACCEPT CURRENT-TIME FROM TIME.
+           DISPLAY 'Hello World'.
            DISPLAY 'SAM1 STARTED DATE = ' CURRENT-MONTH '/'
                   CURRENT-DAY '/' CURRENT-YEAR  '  (mm/dd/yy)'.
            DISPLAY '             TIME = ' CURRENT-HOUR ':'
