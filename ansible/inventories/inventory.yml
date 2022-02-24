@@ -27,6 +27,7 @@ source_system:
       ansible_port: 31652
       ansible_user: ibmuser
     devtest1: # Dev and Test z/OS system sample
-      ansible_host: lpar1.example.com
+      ansible_host: 10.244.64.5
       ansible_port: 22
-      ansible_user: user1
+      ansible_user: ibmuser
+
