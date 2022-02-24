@@ -90,7 +90,7 @@
                10  CURRENT-HNDSEC          PIC 9(2).
       *
        01  REPORT-TOTALS.
-           05  NUM-TRAN-RECS         PIC S9(9)   COMP-3  VALUE +0.
+           05  NUM-TRAN-RECORDS      PIC S9(9)   COMP-3  VALUE +0.
            05  NUM-TRAN-ERRORS       PIC S9(9)   COMP-3  VALUE +0.
            05  NUM-ADD-REQUESTS      PIC S9(9)   COMP-3  VALUE +0.
            05  NUM-ADD-PROCESSED     PIC S9(9)   COMP-3  VALUE +0.
@@ -239,7 +239,7 @@
            PERFORM 710-READ-TRAN-FILE.
 
            IF WS-TRAN-EOF NOT = 'Y'
-               COMPUTE NUM-TRAN-RECS = NUM-TRAN-RECS + 1
+               COMPUTE NUM-TRAN-RECORDS = NUM-TRAN-RECORDS + 1
                MOVE 'Y' TO WS-TRAN-OK
                IF TRAN-KEY < WS-PREV-TRAN-KEY AND TRAN-COMMENT NOT = '*'
                   MOVE 'TRANSACTION OUT OF SEQUENCE' TO ERR-MSG-DATA1
