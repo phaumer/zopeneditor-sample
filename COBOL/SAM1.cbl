@@ -111,7 +111,7 @@
            05  WS-TRANFILE-STATUS      PIC X(2)  VALUE SPACES.
            05  WS-REPORT-STATUS        PIC X(2)  VALUE SPACES.
            05  WS-TRAN-EOF             PIC X     VALUE SPACES.
-           05  WS-TRAN-OK              PIC X     VALUE 'N'.
+           05  WS-TRANS-OK              PIC X     VALUE 'N'.
            05  WS-CUST-FILE-OK         PIC X     VALUE 'N'.
            05  WS-CUST-FILE-EOF        PIC X     VALUE 'N'.
            05  WS-TRAN-MSG             PIC X(50) VALUE SPACES.
@@ -229,6 +229,7 @@
 
            ACCEPT CURRENT-DATE FROM DATE.
            ACCEPT CURRENT-TIME FROM TIME.
+           DISPLAY "HELLO".
            DISPLAY 'SAM1 STOPPED DATE = ' CURRENT-MONTH '/'
                   CURRENT-DAY '/' CURRENT-YEAR  '  (mm/dd/yy)'.
            DISPLAY '             TIME = ' CURRENT-HOUR ':'
@@ -240,7 +241,7 @@
 
            IF WS-TRAN-EOF NOT = 'Y'
                COMPUTE NUM-TRAN-RECORDS = NUM-TRAN-RECORDS + 1
-               MOVE 'Y' TO WS-TRAN-OK
+               MOVE 'Y' TO WS-TRANS-OK
                IF TRAN-KEY < WS-PREV-TRAN-KEY AND TRAN-COMMENT NOT = '*'
                   MOVE 'TRANSACTION OUT OF SEQUENCE' TO ERR-MSG-DATA1
                   MOVE SPACES TO ERR-MSG-DATA2
@@ -262,7 +263,7 @@
                  END-EVALUATE
                END-IF
                MOVE TRAN-KEY TO WS-PREV-TRAN-KEY
-               IF WS-TRAN-OK = 'Y'
+               IF WS-TRANS-OK = 'Y'
                    PERFORM 830-REPORT-TRAN-PROCESSED
                END-IF
            END-IF .
@@ -280,8 +281,8 @@
       *        Subroutine SAM2 will apply an update to a customer record
       *
                CALL SAM2 USING CUST-REC, TRANSACTION-RECORD,
-                                      WS-TRAN-OK, WS-TRAN-MSG
-               IF WS-TRAN-OK NOT = 'Y'
+                                      WS-TRANS-OK, WS-TRAN-MSG
+               IF WS-TRANS-OK NOT = 'Y'
                    MOVE WS-TRAN-MSG TO ERR-MSG-DATA1
                    MOVE SPACES      TO ERR-MSG-DATA2
                    PERFORM 299-REPORT-BAD-TRAN
@@ -324,7 +325,7 @@
 
        299-REPORT-BAD-TRAN.
            ADD +1 TO NUM-TRAN-ERRORS.
-           MOVE 'N' TO WS-TRAN-OK.
+           MOVE 'N' TO WS-TRANS-OK.
            WRITE REPORT-RECORD FROM ERR-MSG-BAD-TRAN  AFTER 2.
            WRITE REPORT-RECORD FROM MSG-TRAN-SCALE-1.
            WRITE REPORT-RECORD FROM MSG-TRAN-SCALE-2.
