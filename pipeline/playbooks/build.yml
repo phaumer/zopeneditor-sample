@@ -3,21 +3,29 @@
   gather_facts: no
   environment: "{{ environment_vars }}"
   vars:
-    ansible_remote_tmp: /SYSTEM/tmp/plum
+    ansible_remote_tmp: /SYSTEM/tmp/pipeline
   tasks:
     - name: Clone the zAppBuil repository
       ansible.builtin.git:
         repo: "https://github.com/IBM/dbb-zappbuild.git"
-        dest: "{{ansible_remote_tmp}}/ssh/dbb-zappbuild"
+        dest: "{{ansible_remote_tmp}}/dbb-zappbuild"
         executable: /rsusr/ported/bin/git
         clone: yes
         update: yes
 
-    - name: Clone the application repository
+    - name: Clone the sample application repository
       ansible.builtin.git:
         repo: "{{app_repo}}"
-        dest: "{{ansible_remote_tmp}}/ssh/{{app_repo_name}}"
+        dest: "{{ansible_remote_tmp}}/{{app_repo_name}}"
         executable: /rsusr/ported/bin/git
         version: "{{app_branch}}"
         clone: yes
         update: yes
+        
+    - name: Build the sample application
+      shell: |
+        export WORKSPACE=/tmp/pipeline
+        /usr/lpp/IBM/dbb/bin/groovyz\
+         ${WORKSPACE}/dbb-zappbuild/build.groovy --logEncoding UTF-8 -w ${WORKSPACE}\
+         --workDir ${WORKSPACE}/work -f\
+         --application zopeneditor-sample --sourceDir ${WORKSPACE} -h IBMUSER.SAMPLE
