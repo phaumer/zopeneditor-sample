@@ -12,3 +12,12 @@
         executable: /rsusr/ported/bin/git
         clone: yes
         update: yes
+
+    - name: Clone the application repository
+      ansible.builtin.git:
+        repo: "{{app_repo}}"
+        dest: "{{ansible_remote_tmp}}/ssh/app"
+        executable: /rsusr/ported/bin/git
+        version: "{{app_branch}}"
+        clone: yes
+        update: yes
