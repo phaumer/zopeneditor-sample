@@ -9,6 +9,6 @@
       ansible.builtin.git:
         repo: "https://github.com/IBM/dbb-zappbuild.git"
         dest: "{{ansible_remote_tmp}}/ssh/dbb-zappbuild"
-        executable: /u/ibmuser/git.sh
+        executable: /rsusr/ported/bin/git
         clone: yes
         update: yes
