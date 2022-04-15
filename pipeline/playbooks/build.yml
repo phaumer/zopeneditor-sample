@@ -26,6 +26,7 @@
       shell: |
         export WORKSPACE=/tmp/pipeline
         /usr/lpp/IBM/dbb/bin/groovyz\
-         ${WORKSPACE}/dbb-zappbuild/build.groovy --logEncoding UTF-8 -w ${WORKSPACE}\
-         --workDir ${WORKSPACE}/work -f\
-         --application zopeneditor-sample --sourceDir ${WORKSPACE} -h IBMUSER.SAMPLE
+           ${WORKSPACE}/dbb-zappbuild/build.groovy --logEncoding UTF-8 -w ${WORKSPACE}\
+           --workDir ${WORKSPACE}/work -f\
+           --application zopeneditor-sample --sourceDir ${WORKSPACE} -h IBMUSER.SAMPLE\
+           -p  ${WORKSPACE}/zopeneditor-sample/application-conf/datasets-waziaas.properties
