@@ -5,7 +5,7 @@
   vars:
     ansible_remote_tmp: /SYSTEM/tmp/plum
   tasks:
-    - name: Clone a github repository
+    - name: Clone the zAppBuil repository
       ansible.builtin.git:
         repo: "https://github.com/IBM/dbb-zappbuild.git"
         dest: "{{ansible_remote_tmp}}/ssh/dbb-zappbuild"

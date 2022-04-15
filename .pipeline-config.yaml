@@ -5,7 +5,7 @@ setup:
   script: |
     #!/usr/bin/env bash
     echo "Perform The Setup"
-    #env
+    env
     source pipeline/scripts/setup.sh
     exit 0
 
