@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: no
+  environment: "{{ environment_vars }}"
+  vars:
+    ansible_remote_tmp: /SYSTEM/tmp/plum
+  tasks:
+    - name: Clone a github repository
+      ansible.builtin.git:
+        repo: "https://github.com/IBM/dbb-zappbuild.git"
+        dest: "{{ansible_remote_tmp}}/ssh/dbb-zappbuild"
+        executable: /u/ibmuser/git.sh
+        clone: yes
+        update: yes

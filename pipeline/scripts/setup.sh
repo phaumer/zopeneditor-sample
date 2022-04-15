@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+#set -euo pipefail
 
 # $WORKSPACE is shared between steps
 python3 -m venv $WORKSPACE/virtual/environment
@@ -21,15 +21,3 @@ rpm -i sshpass-1.09-4.el8.x86_64.rpm
 ansible-galaxy collection install ibm.ibm_zos_core
 ansible-galaxy collection install ibm.ibm_zos_cics
 
-if [ "$(get_env pipeline_namespace "")" = "cd" ]
-then
-  echo "No setup when running CD pipeline..."
-  exit 0
-else
-  echo "Running in a CI pipeline..."
-fi
-
-#export TOOLCHAIN_CONFIG_JSON="/toolchain/toolchain.json"
-#cat $TOOLCHAIN_CONFIG_JSON
-
-TOOLCHAIN_CONFIG_JSON="$(get_env TOOLCHAIN_CONFIG_JSON)"
