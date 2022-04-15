@@ -25,6 +25,7 @@
     - name: Build the sample application
       shell: |
         export WORKSPACE=/tmp/pipeline
+        export JAVA_HOME=/usr/lpp/java/J8.0_64
         /usr/lpp/IBM/dbb/bin/groovyz\
            ${WORKSPACE}/dbb-zappbuild/build.groovy --logEncoding UTF-8 -w ${WORKSPACE}\
            --workDir ${WORKSPACE}/work -f\
