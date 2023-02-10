@@ -1,0 +1,7 @@
+vscode:
+  extensions:
+    - zowe.vscode-extension-for-zowe
+    - ibm.zopeneditor
+    - eamodio.gitlens
+image:
+  file: .gitpod.Dockerfile
