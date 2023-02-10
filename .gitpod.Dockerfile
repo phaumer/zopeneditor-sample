@@ -10,5 +10,7 @@
 FROM gitpod/workspace-full:latest
 
 RUN npm install -g @zowe/cli@latest --ignore-scripts && \
-    npm install -g @ibm/zapp-core && \
-    npm install -g @ibm/rse-api-for-zowe-cli --ignore-scripts
+    zowe plugins install @ibm/rse-api-for-zowe-cli
+
+RUN brew install ansible ansible-lint && \
+    ansible-galaxy collection install ibm.ibm_zos_core
