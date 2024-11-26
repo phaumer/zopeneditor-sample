@@ -8,7 +8,7 @@ components:
       size: 100Mi
   - name: wazi-terminal
     container:
-      image: registry.redhat.io/devspaces/udi-rhel8:3.16
+      image: stg.icr.io/phaumer/zopeneditor-sidcar@sha256:a041cbd9131eb462871f478b21e9b44abcf8fc42cc67f4efd022f6f23c9fbfcf
       memoryLimit: 3072Mi
       mountSources: true
       volumeMounts:
