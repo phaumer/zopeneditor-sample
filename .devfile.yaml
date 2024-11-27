@@ -8,7 +8,7 @@ components:
       size: 100Mi
   - name: wazi-terminal
     container:
-      image: stg.icr.io/phaumer/zopeneditor-sidcar@sha256:a041cbd9131eb462871f478b21e9b44abcf8fc42cc67f4efd022f6f23c9fbfcf
+      image: jp.icr.io/phaumer/ibm-wazi-for-devspaces-sidecar@sha256:8ee619327e6a4f0adc96cc399432b67e0b04ba6ceb6fd0e4cde156e7d06531a0
       memoryLimit: 3072Mi
       mountSources: true
       volumeMounts:
