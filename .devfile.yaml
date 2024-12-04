@@ -1,6 +1,6 @@
 schemaVersion: 2.3.0
 metadata:
-  name: wazi-udi
+  name: idzee-devspaces
 
 components:
   - name: zowe
@@ -8,7 +8,7 @@ components:
       size: 100Mi
   - name: wazi-terminal
     container:
-      image: jp.icr.io/phaumer/ibm-wazi-for-devspaces-sidecar@sha256:8ee619327e6a4f0adc96cc399432b67e0b04ba6ceb6fd0e4cde156e7d06531a0
+      image: jp.icr.io/phaumer/ibm-wazi-for-devspaces-sidecar@sha256:5c073fabe1c016d67e19fa6155caf910fdf89c2ec0467178b34877dfa576c987
       memoryLimit: 3072Mi
       mountSources: true
       volumeMounts:
