@@ -13,7 +13,7 @@ components:
       mountSources: true
   - name: zowe-terminal
     container:
-      image: jp.icr.io/phaumer/idzee-devspaces-sidecar-minimal@sha256:ab323388932469c9821005cdb66beb7401f3bdd0ea5c9f344ce25542ec35098c
+      image: jp.icr.io/phaumer/idzee-devspaces-sidecar-minimal@sha256:e1a6189b6b69935da83fead7f95c17f379dcb11f6ef25513b1b9f4c6c78e16a1
       memoryLimit: 515Mi
       mountSources: true
       volumeMounts:
