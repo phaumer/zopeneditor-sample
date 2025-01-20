@@ -8,6 +8,7 @@
 // Contract with IBM Corp.
 // ############################################################################
 
+// Example integrated from <https://github.com/codespaces-contrib/codespaces-openvpn>
 {
   "name": "Z Open Editor container with VPN",
   "build": {
