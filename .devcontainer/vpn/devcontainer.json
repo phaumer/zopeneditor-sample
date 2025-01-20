@@ -1,0 +1,73 @@
+// ############################################################################
+// Licensed Materials - Property of IBM
+// (c) Copyright IBM Corporation 2025. All Rights Reserved.
+// (c) Copyright Microsoft Corporation. All rights reserved.
+//
+// Note to U.S. Government Users Restricted Rights:
+// Use, duplication or disclosure restricted by GSA ADP Schedule
+// Contract with IBM Corp.
+// ############################################################################
+
+{
+  "name": "Z Open Editor container with VPN",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  // Add Java LTS with Maven, Node.js LTS, and Ansible
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installMaven": "true",
+      "installGradle": "false"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "installYarnUsingApt": true,
+      "version": "lts",
+      "nvmVersion": "latest"
+    },
+    "ghcr.io/devcontainers-extra/features/ansible:2": {},
+    "ghcr.io/hspaans/devcontainer-features/ansible-lint:1": {}
+  },
+
+  // Install Zowe CLI and the RSE API Plugin for Zowe CLI
+  "updateContentCommand": "sh .devcontainer/installZowe.sh",
+
+  // Allow the container to interact with host networking
+  "runArgs": [
+    "--cap-add=NET_ADMIN",
+    "--cap-add=NET_RAW",
+    "--device=/dev/net/tun"
+  ],
+
+  // Save the contents of the OPENVPN_CONFIG secret to disk - it lands in .devcontainer/openvpn-tmp
+  "initializeCommand": "bash .devcontainer/vpn/save-config.sh",
+
+  // [Optional] Once the dev container is running, automatically start up the VPN client
+  "postStartCommand": "bash .devcontainer/vpn/start-openvpn.sh",
+
+  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "vscode",
+
+  // Configure VS Code with settings used Zowe and for this workspace and recommended extensions
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "zowe.security.secureCredentialsEnabled": false,
+        "zopeneditor.zapp.variables": {
+          "HLQ": "IBMUSER",
+          "JAVA_HOME": "/usr/lib/jvm/msopenjdk-current",
+          "WORKSPACE": "/workspaces/zopeneditor-sample"
+        }
+      },
+      "extensions": [
+        "ibm.zopeneditor",
+        "zowe.vscode-extension-for-zowe",
+        "redhat.vscode-yaml",
+        "vscjava.vscode-java-pack",
+        "redhat.ansible"
+      ]
+    }
+  }
+}
