@@ -8,7 +8,7 @@ components:
       size: 100Mi
   - name: idzee-terminal
     container:
-      image: icr.io/wazi-code/ibm-wazi-for-devspaces-sidecar:latest
+      image: jp.icr.io/phaumer/idzee-devspaces-sidecar:latest
       memoryLimit: 3072Mi
       mountSources: true
       volumeMounts:
