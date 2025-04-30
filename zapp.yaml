@@ -1,15 +1,15 @@
 ################################################################
 # LICENSED MATERIALS - PROPERTY OF IBM
 # "RESTRICTED MATERIALS OF IBM"
-# (C) COPYRIGHT IBM CORPORATION 2020, 2024. ALL RIGHTS RESERVED
+# (C) COPYRIGHT IBM CORPORATION 2020, 2025. ALL RIGHTS RESERVED
 # US GOVERNMENT USERS RESTRICTED RIGHTS - USE, DUPLICATION,
 # OR DISCLOSURE RESTRICTED BY GSA ADP SCHEDULE
 # CONTRACT WITH IBM CORPORATION
 ################################################################
 
 name: sam
-description: For IBM Z Open Editor 5.0.0 or newer. Wazi's code samples with COBOL, PL/I, and HLASM applications
-version: 5.0.0
+description: For IBM Z Open Editor 5.3.0 or newer. Wazi's code samples with COBOL, PL/I, and HLASM applications
+version: 5.3.0
 author:
   name: IBM CORPORATION
 
@@ -74,6 +74,10 @@ propertyGroups:
         type: local
         locations:
           - "**/ASMMAC"
+      - name: maclib
+        type: mvs
+        locations:
+          - "${HLQ}.SAMPLE.MACLIB"
 
   - name: rexx-local
     language: rexx
@@ -96,6 +100,10 @@ propertyGroups:
           - "JCLLIB"
       - name: jcllib
         type: mvs
+      - name: proclib
+        type: local
+        locations:
+          - "JCLPROC"
       - name: syslib
         type: mvs
         locations:
@@ -175,6 +183,7 @@ profiles:
       tempDataHLQ: ${HLQ}
       outputDataSet: ${HLQ}.PREPROC.OUTPUT()
       commandParameters: ""
+      # programDataSet: ${HLQ}.PREPROC.COBOL()
   - name: local-pli
     language: pl1
     type: preprocessor
@@ -194,3 +203,14 @@ profiles:
       tempDataHLQ: ${HLQ}
       outputDataSet: ${HLQ}.PREPROC.OUTPUT()
       commandParameters: ""
+      # programDataSet: ${HLQ}.PREPROC.COBOL()
+
+  # - name: pli-expand-macros
+  #   language: pl1
+  #   type: preprocessor
+  #   location: mvs
+  #   settings:
+  #     commandDataSet: ${HLQ}.PREPROC(PLIPRPC)
+  #     tempDataHLQ: ${HLQ}
+  #     outputDataSet: ${HLQ}.PREPROC.OUTPUT()
+  #     commandParameters: <SYSPRINT>${HLQ}.LOG.OUTPUT()</SYSPRINT>
