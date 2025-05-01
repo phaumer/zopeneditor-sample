@@ -8,7 +8,10 @@ components:
       size: 100Mi
   - name: idzee-terminal
     container:
-      image: jp.icr.io/phaumer/idzee-devspaces-sidecar@sha256:bf2d8095d23a87e90a52ede5c1da475425fc94a504a8083a3711ff2c50949819
+      # Based on full UDI image
+      # image: jp.icr.io/phaumer/idzee-devspaces-sidecar@sha256:bf2d8095d23a87e90a52ede5c1da475425fc94a504a8083a3711ff2c50949819
+      # Based on UDI-Base image
+      image: jp.icr.io/phaumer/idzee-devspaces-udibase@sha256:8d62a0f7919a48d00a0e940672e9873c92acdae3c75fc67afc82017d4b68e63e
       memoryLimit: 3072Mi
       mountSources: true
       volumeMounts:
