@@ -29,7 +29,7 @@ components:
           targetPort: 9080
       env:
         - name: ZCON_DESIGNER_PROJECT
-          value: /projects/apiProject
+          value: /projects/zopeneditor-sample/apiProject
       image: "icr.io/zosconnect/ibm-zcon-designer:3.0.88"
       memoryLimit: 4927M
       mountSources: true
