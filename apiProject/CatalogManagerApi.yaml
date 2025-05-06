@@ -2,12 +2,12 @@ openapi: 3.0.0
 info:
   title: CatalogManagerApi
   description: Manage a catalog through an API for CICS.
-  version: "1.1"
+  version: '1.1'
   license:
     name: Apache-2.0
     url: https://opensource.org/licenses/Apache-2.0
 servers:
-  - url: /
+- url: /
 security:
   - BasicAuth: []
   - BearerAuth: []
@@ -20,20 +20,20 @@ paths:
       description: Uses the catalogProgram CICS COMMAREA z/OS asset
       operationId: itemsGet
       parameters:
-        - $ref: "#/components/parameters/startItemID"
+        - $ref: '#/components/parameters/startItemID'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CatalogResponse"
-        "500":
+                $ref: '#/components/schemas/CatalogResponse'
+        '500':
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
   /items/{id}:
     get:
       tags:
@@ -42,15 +42,15 @@ paths:
       description: Uses the catalogProgram CICS COMMAREA z/OS asset
       operationId: itemsIdGet
       parameters:
-        - $ref: "#/components/parameters/id"
+        - $ref: '#/components/parameters/id'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CatalogItemResponse"
-        "404":
+                $ref: '#/components/schemas/CatalogItemResponse'
+        '404':
           description: Not Found
           content:
             application/json:
@@ -61,7 +61,7 @@ paths:
                     type: string
                 example:
                   message: Item could not be found
-        "500":
+        '500':
           description: Internal Server Error
           content:
             application/json:
@@ -80,10 +80,10 @@ paths:
       description: Uses the catalogProgram CICS COMMAREA z/OS asset
       operationId: ordersPost
       parameters:
-        - $ref: "#/components/parameters/itemNumber"
-        - $ref: "#/components/parameters/quantity"
+        - $ref: '#/components/parameters/itemNumber'
+        - $ref: '#/components/parameters/quantity'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -92,18 +92,18 @@ paths:
                 properties:
                   message:
                     type: string
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     ErrorResponse:
@@ -123,7 +123,7 @@ components:
         items:
           type: array
           items:
-            $ref: "#/components/schemas/CatalogItemResponse"
+            $ref: '#/components/schemas/CatalogItemResponse'
     CatalogItemResponse:
       type: object
       properties:
@@ -137,7 +137,7 @@ components:
             orders:
               type: string
               maxLength: 300
-              example: "10 'Ball Pens Red 24pk' on order at price $2.9. Total orders value: $29."
+              example: '10 ''Ball Pens Red 24pk'' on order at price $2.9. Total orders value: $29.'
         information:
           type: object
           properties:
