@@ -1,6 +1,6 @@
 schemaVersion: 2.3.0
 metadata:
-  name: idzee-devspaces
+  name: idzee-zosconnect
 
 components:
   - name: zowe
@@ -14,3 +14,22 @@ components:
       volumeMounts:
         - name: zowe
           path: /home/user/.zowe
+  - name: zosconnect
+    container:
+      endpoints:
+        - exposure: public
+          name: zc-ui-http
+          path: /zosConnect/designer/
+          protocol: http
+          targetPort: 9080
+        - exposure: public
+          name: zc-ui-https
+          path: /zosConnect/designer/
+          protocol: https
+          targetPort: 9080
+      env:
+        - name: ZCON_DESIGNER_PROJECT
+          value: /projects/apiProject
+      image: "icr.io/zosconnect/ibm-zcon-designer:3.0.88"
+      memoryLimit: 4927M
+      mountSources: true
