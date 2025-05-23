@@ -8,10 +8,7 @@ components:
       size: 100Mi
   - name: idzee-terminal
     container:
-      # Multi-arch image test for full image
-      # image: jp.icr.io/phaumer/idzee-devspaces:latest
-      #  Multi-arch image test for base image
-      image: jp.icr.io/phaumer/idzee-devspaces-udibase:5.3.1
+      image: stg.icr.io/ibm/wazi-code/ibm-wazi-for-devspaces-sidecar:5.3.0
       memoryLimit: 3072Mi
       mountSources: true
       volumeMounts:
